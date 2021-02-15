@@ -1,12 +1,16 @@
 terraform {
-  required_version = ">= 0.12, <= 0.14.6"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws" # gets the executable code
+      version = "~>2.0"   # Allow any 2.x version of the AWS provider
+    }
+  }
+  required_version = ">=0.14"
 }
 
 provider "aws" {
   region = "us-east-2"
 
-  # Allow any 2.x version of the AWS provider
-  version = "~> 2.0"
 }
 
 resource "aws_instance" "app" {
